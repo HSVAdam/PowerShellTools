@@ -2,6 +2,8 @@ FUNCTION Get-MyFiles {
     <#
         .DESCRIPTION
         Performs an advanced Get-Childitem that allows exclusion of files and folders.
+        .FUNCTIONALITY
+        Developed to retrieve a collection of files and folders to backup from application; allowing exclusion of configuration files or log folders.
         .PARAMETER Path
         Root path to begin file collection.
         .PARAMETER xFiles
@@ -13,7 +15,7 @@ FUNCTION Get-MyFiles {
         .EXAMPLE
         PS> $Contents = Get-MyFiles -Path 'D:\inetpub\wwwroot' -xFiles @('thisfile.txt', '*.exe')
         .NOTES
-        Author: A. Branham
+        Author: Adam Branham (https://github.com/HSVAdam)
     #>
     [CmdletBinding()]
     param(
