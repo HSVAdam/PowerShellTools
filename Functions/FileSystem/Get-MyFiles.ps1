@@ -20,7 +20,7 @@ FUNCTION Get-MyFiles {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
-        [ValidateScript({ IF ( -Not ($_ | Test-Path) ) { THROW 'Path does not exist.' } RETURN $true })]
+        [ValidateScript({ IF ( -Not ($_ | Test-Path) ) { THROW "Path $_ is not valid" } RETURN $true })]
         [System.IO.FileInfo]$Path,
         [Parameter(Mandatory = $false)]
         [string[]]$xFiles = @('EXCLUDEFILE.TXT'),
@@ -32,7 +32,12 @@ FUNCTION Get-MyFiles {
         [regex]$xFoldersRegEx = '(?i)' + (($xFolders | ForEach-Object { [regex]::escape($_) }) -join '|') + ''
     }
     PROCESS {
-        $ReturnData = Get-ChildItem -Path $Path -Recurse -Exclude $xFiles | Where-Object { $null -eq $xFolders -or $_.FullName.Replace($Path.FullName, '') -notmatch $xFoldersRegEx }
+        TRY {
+            $ReturnData = Get-ChildItem -Path $Path -Recurse -Exclude $xFiles | Where-Object { $null -eq $xFolders -or $_.FullName.Replace($Path.FullName, '') -notmatch $xFoldersRegEx }
+        }
+        CATCH {
+            $Error[0]
+        }
     }
     END {
         RETURN $ReturnData
