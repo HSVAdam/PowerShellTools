@@ -2,6 +2,8 @@ FUNCTION Copy-FolderStructure {
     <#
         .DESCRIPTION
         Exactly replicates a folder structure from source to destination with no files.
+        .FUNCTIONALITY
+        Developed to clone log folder structure in a new location.
         .PARAMETER Source
         The source folder to clone.
         .PARAMETER Destination
