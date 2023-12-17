@@ -26,10 +26,10 @@ FUNCTION Get-DotNetInstalls {
         IF (Test-Path -Path $DotNet) {
             $ReturnData += Get-ChildItem -Path $DotNet -Recurse | Get-ItemProperty -Name Version, InstallPath -ErrorAction SilentlyContinue | Where-Object { $_.PSChildName -Match 'Full' } | Select-Object Version, InstallPath | ForEach-Object {
                 If ($_.InstallPath -like '*Framework64*') {
-                    "Microsoft NET Framework Full (x64) $($_.Version)"
+                    "Microsoft .NET Framework Full (x64) $($_.Version)"
                 }
                 ELSE {
-                    "Microsoft NET Framework Full (x86) $($_.Version)"
+                    "Microsoft .NET Framework Full (x86) $($_.Version)"
                 }
             }
         }
@@ -37,10 +37,10 @@ FUNCTION Get-DotNetInstalls {
         IF (Test-Path -Path $DotNet) {
             $ReturnData += Get-ChildItem -Path $DotNet -Recurse | Get-ItemProperty -Name Version, InstallPath -ErrorAction SilentlyContinue | Where-Object { $_.PSChildName -Match 'Client' } | Select-Object Version, InstallPath | ForEach-Object {
                 If ($_.InstallPath -like '*Framework64*') {
-                    "Microsoft NET Framework Client (x64) $($_.Version)"
+                    "Microsoft .NET Framework Client (x64) $($_.Version)"
                 }
                 ELSE {
-                    "Microsoft NET Framework Client (x86) $($_.Version)"
+                    "Microsoft .NET Framework Client (x86) $($_.Version)"
                 }
             }
         }
