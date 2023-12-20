@@ -12,6 +12,8 @@ FUNCTION Update-MyModules {
         PS> Update-MyModules -Verbose
         .NOTES
         Author: Adam Branham (https://github.com/HSVAdam)
+
+        Best Usage: Run powershell with -NoProfile parameter.
     #>
     [CmdletBinding()]
     param(
