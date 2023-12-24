@@ -6,6 +6,8 @@ FUNCTION New-CustomModule {
         Developed to quickly package function files into a module.
         .PARAMETER Name
         [string] Name of the module to create.
+        .PARAMETER Version
+        [string] Version of your module.
         .PARAMETER Path
         [System.IO.FileInfo] Root location which contains versions.txt file.
         .PARAMETER Description
@@ -17,9 +19,9 @@ FUNCTION New-CustomModule {
         .PARAMETER PowerShellVersion
         [string] Minimum version of PowerShell required to run.
         .EXAMPLE
-        PS> New-CustomModule -Name 'Test-Module' -Path 'D:\Modules' -Description 'Test module for something'
+        PS> New-CustomModule -Name 'Test-Module' -Version 1.0 -Path 'D:\Modules' -Description 'Test module for something'
         .EXAMPLE
-        PS> New-CustomModule -Name 'Test-Module' -Path 'D:\Modules' -Description 'Test module for something' -Author 'Me'
+        PS> New-CustomModule -Name 'Test-Module' -Version 1.0 -Path 'D:\Modules' -Description 'Test module for something' -Author 'Me'
         .NOTES
         Author: Adam Branham (https://github.com/HSVAdam)
     #>
